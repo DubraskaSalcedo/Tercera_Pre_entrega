@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block fijo %}
+
+{# Ver estudiantes #}
+<hr><br>
+        {% if todos_los_estudiantes %}
+                <h1>Los estudiantes son: </h1>
+                {% for estudiante in todos_los_estudiantes %}
+                <p> {{estudiante.nombre}}  {{estudiante.apellido}}</p>
+                {% endfor %}
+        {% else %}
+                <h1>No hay estudiantes en el momento</h1>
+        {% endif  %}
+
+<a href="{% url 'AppProyectoFinalRegistrarEstudiante' %}"> Registrarme </a>
+{% endblock %}

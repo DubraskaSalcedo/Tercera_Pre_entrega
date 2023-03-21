@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block fijo %}
+
+{# Ver cursos #}
+<hr><br>
+        {% if todos_los_cursos %}
+                <h1>Los cursos disponibles son: </h1>
+                {% for curso in todos_los_cursos %}
+                <p> Curso: {{curso.nombre}}, Grupo: {{curso.grupo}}</p>
+                {% endfor %}
+        {% else %}
+                <h1>No hay cursos en el momento</h1>
+        {% endif  %}
+<a href="{% url 'AppProyectoFinalSolicitar' %}"> Solicitar Curso </a>
+{% endblock %}

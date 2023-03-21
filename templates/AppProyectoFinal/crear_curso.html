@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block fijo %}
+
+{# Formulario para crear el curso #}
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="Crear">
+</form>
+{% endblock %}
