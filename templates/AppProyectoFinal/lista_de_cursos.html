@@ -11,6 +11,10 @@
                 <h1>Los cursos disponibles son: </h1>
                 {% for curso in todos_los_cursos %}
                 <p> Curso: {{curso.nombre}}, Grupo: {{curso.grupo}}</p>
+                <a href="{% url 'AppProyectoFinalEliminar' curso.grupo %}"> Eliminar </a>
+                <br>
+                <a href="{% url 'AppProyectoFinalEditar' curso.grupo %}"> Editar </a>
+<hr>
                 {% endfor %}
         {% else %}
                 <h1>No hay cursos en el momento</h1>

@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from AppProyectoFinal.models import Curso, Estudiante
-from AppProyectoFinal.forms import CursoForm, EstudianteForm, BuscarCursoForm
+from django.shortcuts import render, redirect
+from AppProyectoFinal.models import Curso, Estudiante, Profesor
+from AppProyectoFinal.forms import CursoForm, EstudianteForm, BuscarCursoForm, ProfesorForm
 def mostrar_principal(request):
     return render(request,"base.html")
 
@@ -25,7 +25,9 @@ def mostrar_formulario_curso(request):
     return render(request, "AppProyectoFinal/crear_curso.html", context=context)
 
 def lista_de_profesores(request):
-    return render(request, "AppProyectoFinal/lista_de_profesores.html")
+    all_profesores = Profesor.objects.all()
+    context = {"todos_los_profesores": all_profesores}
+    return render(request, "AppProyectoFinal/lista_de_profesores.html", context=context)
 
 def lista_de_estudiantes(request):
     all_estudiantes = Estudiante.objects.all()
@@ -55,3 +57,32 @@ def mostrar_formulario_de_buscar_curso(request):
             return render(request, "AppProyectoFinal/listar_filtro.html", context=context)
         context = {"form": BuscarCursoForm()}
     return render(request, "AppProyectoFinal/buscar_curso.html", context=context)
+
+def eliminar_curso(request, grupo):
+    get_curso= Curso.objects.get(grupo=grupo)
+    get_curso.delete()
+    return redirect("AppProyectoFinallistacursos")
+def editar_curso(request, grupo):
+    get_curso = Curso.objects.get(grupo=grupo)
+    if request.method == "POST":
+        mi_formulario = CursoForm(request.POST)
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            get_curso.nombre = informacion['nombre']
+            get_curso.grupo = informacion['grupo']
+            get_curso.save()
+            return redirect("AppProyectoFinallistacursos")
+    context = {"grupo": grupo, "form": CursoForm(initial={"nombre": get_curso.nombre, "grupo": get_curso.grupo})}
+    return render(request, "AppProyectoFinal/editar_curso.html", context=context)
+
+def mostrar_formulario_profesor(request):
+    if request.method == "POST":
+        mi_formulario = ProfesorForm(request.POST)
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            profesor_save = Profesor(nombre=informacion['nombre'], apellido=informacion['apellido'], email=informacion['email'], profesion=informacion['profesion'])
+            profesor_save.save()
+            context = {"profesor": profesor_save}
+            return render(request, "AppProyectoFinal/guardar_profesor.html", context=context)
+    context = {"form": ProfesorForm()}
+    return render(request, "AppProyectoFinal/registrar_profesor.html", context=context)
