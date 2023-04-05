@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from AppProyectoFinal.views import mostrar_principal
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mostrar_principal),
-    path('mates/', include('AppProyectoFinal.urls'))
+    path('mates/', include('AppProyectoFinal.urls')),
+    path('account/', include('account.urls'))
    ]
