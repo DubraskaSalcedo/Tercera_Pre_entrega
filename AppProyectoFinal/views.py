@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from AppProyectoFinal.models import Curso, Estudiante, Profesor
 from AppProyectoFinal.forms import CursoForm, EstudianteForm, BuscarCursoForm, ProfesorForm
+from django.contrib.auth.decorators import login_required
 def mostrar_principal(request):
     return render(request,"base.html")
 
@@ -58,6 +59,7 @@ def mostrar_formulario_de_buscar_curso(request):
         context = {"form": BuscarCursoForm()}
     return render(request, "AppProyectoFinal/buscar_curso.html", context=context)
 
+@login_required
 def eliminar_curso(request, grupo):
     get_curso= Curso.objects.get(grupo=grupo)
     get_curso.delete()
