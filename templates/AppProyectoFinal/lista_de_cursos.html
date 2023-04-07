@@ -14,7 +14,11 @@
                 {% if user.is_authenticated %}
                         <a href="{% url 'AppProyectoFinalEliminar' curso.grupo %}"> Eliminar </a>
                         <br>
+
                         <a href="{% url 'AppProyectoFinalEditar' curso.grupo %}"> Editar </a>
+                        <br>
+
+                        <a href="{% url 'AppProyectoFinalSolicitar' %}"> Crear Curso </a>
                 {% endif %}
 <hr>
                 {% endfor %}
@@ -22,5 +26,4 @@
                 <h1>No hay cursos en el momento</h1>
         {% endif  %}
 
-<a href="{% url 'AppProyectoFinalSolicitar' %}"> Crear Curso </a>
 {% endblock %}

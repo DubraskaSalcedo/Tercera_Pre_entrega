@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block fijo %}
+<form action="{% url "accountEditar" %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+ <h1>Formulario para editar perfil </h1>
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <input type="submit" value="Editar">
+    </form>
+{% endblock %}

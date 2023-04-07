@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from AppProyectoFinal.views import mostrar_principal
+from django.conf.urls.static import static
+from ProyectoFinal import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mostrar_principal),
     path('mates/', include('AppProyectoFinal.urls')),
-    path('account/', include('account.urls'))
-   ]
+    path('account/', include('account.urls')),
+   ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

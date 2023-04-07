@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Landing Page - Start Bootstrap Theme</title>
+        <title>Disfrutar la Matemática</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -16,7 +16,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'AppProyectoFinal/css/styles.css' %}" rel="stylesheet" />
     </head>
-       <body>
+    <body>
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
@@ -24,44 +24,34 @@
                 <a class="btn btn-primary" href="{% url 'AppProyectoFinallistacursos' %}">Cursos</a>
                 <a class="btn btn-primary" href="{% url 'AppProyectoFinallistaprofesores' %}">Profesores</a>
                 <a class="btn btn-primary" href="{% url 'AppProyectoFinallistaestudiantes' %}">Estudiantes</a>
-
                 {% if user.is_authenticated %}
-                    <h1>{{ user.username }}</h1>
+                    <h1>{{ user.username }} </h1>
+                    <img src="{{ user.avatar.imagen.url }}" height="40px">
                     <a class="btn btn-primary" href="{% url 'accountLogout' %}">Logout</a>
                 {% else %}
                     <a class="btn btn-primary" href="{% url 'accountLogin' %}">Login</a>
 
                     <a class="btn btn-primary" href="{% url 'accountRegister' %}">Registrar</a>
                 {% endif %}
-
             </div>
         </nav>
-        {% block fijo %}
-        <h1>¡Bienvenido!</h1>
+    <header >
+        <div style="display:flex; align-items:center; justify-content:center; height:100px; background-size: cover; background-image: url({% static 'AppProyectoFinal/assets/img/nueva.jpg' %})">
+                <h1 > Disfrutar la Matemática</h1>
+        </div>
+    </header>
 
+
+     {% block fijo %}
+        <div class="container" style="display:flex; justify-content:center">
+                <h2 class="mb-5">¡Bienvenido!</h2>
+        </div>
+        <div class="container" style="display:flex; justify-content:space-evently"> <p> ¡En este blog quiero compartirte algunas maneras divertidas de aprender Matemática!
+            Junto a profesores de distintas áreas del conocimiento puedes enrriquecer tus conocimientos.</p>
+        </div>
+        <div class="container" style="display:flex; justify-content:center"> ¡Gracias por visitarnos! </div>
         {% endblock %}
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="text-center text-black">
-                            <!-- Page heading-->
-                            <h1 class="mb-5">Matemática Básica</h1>
-                            <!-- Signup form-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- * * SB Forms Contact Form * *-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- This form is pre-integrated with SB Forms.-->
-                            <!-- To make this form functional, sign up at-->
-                            <!-- https://startbootstrap.com/solution/contact-forms-->
-                            <!-- to get an API token!-->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
         <!-- Icons Grid-->
         <section class="features-icons bg-light text-center">
             <div class="container">
@@ -144,34 +134,17 @@
                     </div>
                 </div>
             </div>
-
-
-        <!-- Footer-->
+            <!-- Footer-->
         <footer class="footer bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">About</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contact</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
-                        </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                            </li>
                             <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                                <a href="https://www.instagram.com/dubraska_salcedo/"><i class="bi-instagram fs-3"></i></a>
                             </li>
                         </ul>
                     </div>

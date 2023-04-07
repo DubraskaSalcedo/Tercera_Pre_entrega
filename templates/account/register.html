@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block fijo %}
-<form action="{% url "accountRegister" %}" method="POST">
-    <h1>Login</h1>
+<form action="{% url "accountRegister" %}" method="POST" enctype="multipart/form-data">
+    <h1>Formulario de Registro</h1>
     {% csrf_token %}
     {{ form.as_p}}
     <input type="submit" value="Registrar">

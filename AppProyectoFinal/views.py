@@ -8,6 +8,8 @@ def mostrar_principal(request):
 def soy(request):
     return render(request, "AppProyectoFinal/quien_soy.html")
 
+def lectura_completa(request):
+    pass
 def lista_de_cursos(request):
     all_cursos = Curso.objects.all()
     context = {"todos_los_cursos": all_cursos}
