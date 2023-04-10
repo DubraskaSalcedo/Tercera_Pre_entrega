@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from AppProyectoFinal.views import mostrar_principal
 from django.conf.urls.static import static
-from ProyectoFinal import settings
+from django.conf import settings
+
 
 
 urlpatterns = [

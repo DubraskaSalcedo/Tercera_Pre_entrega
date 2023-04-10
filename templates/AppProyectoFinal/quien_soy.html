@@ -1,18 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block fijo %}
-
-<h2 class="mb-5">¡Hola! Soy Dubraska Salcedo</h2>
 <div>
-    <div>
-        <p> Blaaaaaaaaa
-        </p>
+    <div >
+        <img src="url({% static 'AppProyectoFinal/assets/img/grupo.jpg' %})">
     </div>
+    <div class="container" style="display:flex; justify-content:center">
+        <h2 class="mb-5">¡Hola! Soy Dubraska Salcedo</h2>
+    </div>
+
+    <div class="container" style="display:flex; justify-content:space-evently">
+            <p> Soy Matemática, me gusta aprender cada día algo nuevo. Estoy finalizando el Curso Python desde cero de CoderHouse, para el cual presento este proyecto. </p>
+    </div>
+
+    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+        <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+                <a href="https://www.instagram.com/dubraska_salcedo/"><i class="bi-instagram fs-3"></i></a>
+            </li>
+        </ul>
+        <input type="submit" value="Leer más">
+    </div>
+
 
     <div style="visibility:hidden;">
        <p>Además me interesa </p>
     </div>
-
 </div>
-<input type="submit" value="Leer más">
+
 {% endblock %}
