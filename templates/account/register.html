@@ -2,7 +2,7 @@
 
 {% block fijo %}
 <form action="{% url "accountRegister" %}" method="POST" enctype="multipart/form-data">
-    <h1>Formulario de Registro</h1>
+    <h2>Formulario de Registro</h2>
     {% csrf_token %}
     {{ form.as_p}}
     <input type="submit" value="Registrar">

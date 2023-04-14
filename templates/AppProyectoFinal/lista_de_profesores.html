@@ -7,10 +7,10 @@
 {# Lista de profesores #}
 <hr><br>
 {% if todos_los_profesores %}
-<h1>Los Profesores activos son: </h1>
+<h2>Los Profesores activos son: </h2>
     {% for profesor in todos_los_profesores %}
-        <p> {{profesor.nombre}}  {{profesor.apellido}}, {{profesor.email}}</p>
-<br>
+        <p> {{profesor.nombre}} {{profesor.apellido}}, {{profesor.email}}</p>
+        <br>
     {% endfor %}
 {% else %}
     <h1>No hay Profesores en el momento</h1>

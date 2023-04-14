@@ -7,23 +7,29 @@
 
 {# Ver cursos #}
 <hr><br>
-        {% if todos_los_cursos %}
-                <h1>Los cursos disponibles son: </h1>
-                {% for curso in todos_los_cursos %}
-                <p> Curso: {{curso.nombre}}, Grupo: {{curso.grupo}}</p>
-                {% if user.is_authenticated %}
-                        <a href="{% url 'AppProyectoFinalEliminar' curso.grupo %}"> Eliminar </a>
-                        <br>
+{% if todos_los_cursos %}
+    <h2>Los cursos disponibles son: </h2>
+    {% for curso in todos_los_cursos %}
+        <div>
+            <li>
+                Curso: {{curso.title}}, Autor: {{curso.author.first_name}} {{curso.author.last_name}}
+                <p> {{curso.intro}} </p>
+                <a class="btn btn-light" href="{% url 'AppProyectoFinallistacursosDetalles' curso.title %}">Más detalles del
+                    curso</a>
+            </li>
+        </div>
 
-                        <a href="{% url 'AppProyectoFinalEditar' curso.grupo %}"> Editar </a>
-                        <br>
-
-                        <a href="{% url 'AppProyectoFinalSolicitar' %}"> Crear Curso </a>
-                {% endif %}
-<hr>
-                {% endfor %}
-        {% else %}
-                <h1>No hay cursos en el momento</h1>
-        {% endif  %}
-
+        {% if user.is_authenticated  and user == curso.author %}
+            <a href="{% url 'AppProyectoFinalEliminar' curso.title %}"> Eliminar </a>
+            <br>
+            <a href="{% url 'AppProyectoFinalEditar' curso.title %}"> Editar </a>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <h>No hay cursos en el momento</h>
+{% endif  %}
+    <hr>
+{% if user.is_authenticated %}
+    <a href="{% url 'AppProyectoFinalSolicitar' %}"> Crear Curso </a>
+{% endif %}
 {% endblock %}

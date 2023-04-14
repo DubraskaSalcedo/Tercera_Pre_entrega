@@ -22,15 +22,15 @@
             <div class="container">
                 <a class="btn btn-primary" href="{% url 'AppProyectoFinalquiensoy' %}">Quién soy</a>
                 <a class="btn btn-primary" href="{% url 'AppProyectoFinallistacursos' %}">Cursos</a>
-                <a class="btn btn-primary" href="{% url 'AppProyectoFinallistaprofesores' %}">Profesores</a>
-                <a class="btn btn-primary" href="{% url 'AppProyectoFinallistaestudiantes' %}">Estudiantes</a>
+
+
                 {% if user.is_authenticated %}
-                    <h1>{{ user.username }} </h1>
+                    <h3>{{ user.username }} </h3>
                     <img src="{{ user.avatar.imagen.url }}" height="40px">
-                     <a class="btn btn-primary" href="{% url 'accountEditar' %}">Editar</a>
-                    <a class="btn btn-primary" href="{% url 'accountLogout' %}">Logout</a>
+                     <a class="btn btn-secondary" href="{% url 'accountMiPerfil' %}">Mi Perfil</a>
+                    <a class="btn btn-primary" href="{% url 'accountLogout' %}">Salir</a>
                 {% else %}
-                    <a class="btn btn-primary" href="{% url 'accountLogin' %}">Login</a>
+                    <a class="btn btn-primary" href="{% url 'accountLogin' %}">Ingresar</a>
 
                     <a class="btn btn-primary" href="{% url 'accountRegister' %}">Registrar</a>
                 {% endif %}
@@ -48,37 +48,9 @@
         <div class="container" style="display:flex; justify-content:space-evently"> <p> ¡En este blog quiero compartirte algunas maneras divertidas de aprender Matemática!
             Junto a profesores de distintas áreas del conocimiento puedes enrriquecer tus conocimientos.</p>
         </div>
-        <div class="container" style="display:flex; justify-content:center"> ¡Gracias por visitarnos! </div>
-     {% endblock %}
-        <!-- Icons Grid-->
-        <section class="features-icons bg-light text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
-                            <h3>Estrategias comprobadas</h3>
-                            <p class="lead mb-0">Te ofezco estrategias didácticas avaladas por estudios en diversos centros de investigación</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
-                            <h3>Profesores calificados</h3>
-                            <p class="lead mb-0">Para que estudies con confianza</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i>
-                            </div>
-                            <h3>Horarios flexibles</h3>
-                            <p class="lead mb-0">Para tu mayor comodidad</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="container" style="display:flex; justify-content:center"> ¡Gracias por visitarnos!
+        </div>
+
         <!-- Image Showcases-->
         <section class="showcase">
             <div class="container-fluid p-0">
@@ -97,13 +69,18 @@
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url({% static 'AppProyectoFinal/assets/img/grupo.jpg' %})"></div>
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url({% static 'AppProyectoFinal/assets/img/grupo.jpg' %})">
+
+                    </div>
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>Fomentamos espacios de discusión</h2>
                         <p class="lead mb-0">Grupos para compartir ideas y experiencias</p>
                     </div>
                 </div>
+            </div>
         </section>
+     {% endblock %}
+
         <!-- Footer-->
         <footer class="footer bg-light">
             <div class="container">

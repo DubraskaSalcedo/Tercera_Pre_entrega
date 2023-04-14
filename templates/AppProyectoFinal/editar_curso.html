@@ -4,11 +4,11 @@
 {% block fijo %}
 
 {# Formulario para editar el curso #}
-<form action="{% url 'AppProyectoFinalEditar' grupo %}" method="POST">
-    {% csrf_token %}
-    <table>
-        {{form.as_table}}
-    </table>
+<div class="form-group">
+    <form action="{% url 'AppProyectoFinalEditar' title %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
     <input type="submit" value="Editar">
-</form>
+    </form>
+</div>
 {% endblock %}

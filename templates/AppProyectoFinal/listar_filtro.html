@@ -4,12 +4,25 @@
 {% block fijo %}
 {# Listar cursos filtrados #}
     {% if cursos %}
-        <h1>Los resultados de su búsqueda son:</h1>
+        <h2>Los resultados de su búsqueda son:</h2>
         {% for curso in cursos %}
-        <p> Curso: {{curso.nombre}} , Grupo: {{curso.grupo}} </p>
+        <p> Curso: {{curso.title}} , Autor: {{curso.author.first_name}} {{curso.author.last_name}} </p>
+        <p> Introducción: {{curso.intro}} </p>
+
+        {# Botón Leer más #}
+            <div>
+                <a class="btn btn-info" href="{% url 'AppProyectoFinallistacursosDetalles' curso.title %}">Más detalles del
+                curso</a>
+            </div>
         {% endfor %}
     {% else %}
         <h3> No hay cursos que correspondan a su búsqueda </h3>
     {% endif %}
 
+{# Regresar a Buscar curso o a Cursos #}
+    <div style="margin-top:20px;">
+        <a class="btn btn-light" style="margin-right:20px;" href="{% url 'AppProyectoFinalBuscar' %}">Volver a Buscar</a>
+
+        <a class="btn btn-light" href="{% url 'AppProyectoFinallistacursos' %}">Volver a Cursos</a>
+    </div>
 {% endblock %}

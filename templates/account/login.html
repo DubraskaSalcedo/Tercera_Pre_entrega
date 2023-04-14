@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 
 {% block fijo %}
-<form action="{% url "accountLogin" %}" method="POST">
-    <h1>Login</h1>
+<form action="{% url "accountLogin"%}" method="POST" >
     {% csrf_token %}
-    {{ form.as_p}}
-    <input type="submit" value="Login">
-    </form>
+    {{ form.as_p }}
+    <input type="submit" value="Ingresar">
+</form>
 {% endblock %}

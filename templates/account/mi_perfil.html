@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block fijo %}
+<div>
+    <h3>Mi perfil </h3>
+    <img src="{{ user.avatar.imagen.url }}" height="40px">
+    <br>
+    Nombre: {{usuario.first_name}}
+    <br>
+    Apellido: {{usuario.last_name}}
+    <br>
+    Email: {{usuario.email}}
+</div>
+<div>
+    <a class="btn btn-secondary" href="{% url 'accountEditar' %}">Editar Perfil</a>
+</div>
+{% endblock %}
