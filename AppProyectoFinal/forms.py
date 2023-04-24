@@ -1,5 +1,4 @@
 from django import forms
-from AppProyectoFinal.models import Profesor
 
 class CursoForm(forms.Form):
     title = forms.CharField(max_length=100, label="Título")
@@ -10,16 +9,6 @@ class CursoForm(forms.Form):
 
 class ComentarioForm(forms.Form):
     cuerpo = forms.CharField(max_length=100, label="Comentario", widget=forms.Textarea)
-
-class EstudianteForm(forms.Form):
-    nombre = forms.CharField(min_length=3, max_length=40)
-    apellido = forms.CharField(min_length=3, max_length=40)
-    email = forms.EmailField()
-
-class ProfesorForm(forms.ModelForm):
-    class Meta:
-        model = Profesor
-        fields = "__all__"
 
 class BuscarCursoForm(forms.Form):
     title = forms.CharField(label="Título")

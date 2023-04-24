@@ -16,7 +16,7 @@ def login_account2(request):
                 login(request, user)
                 return render(request, "account/prueba.html")
             else:
-                return redirect("AppProyectoFinallistacursos")
+                return redirect("AppProyectoFinalListaTalleres")
     form = AuthenticationForm()
     context = {"form": form}
     return render(request, "account/login.html", context=context)
@@ -31,7 +31,7 @@ def login_account(request):
                 login(request, user)
                 return render(request, "account/prueba.html")
             else:
-                return redirect("AppProyectoFinallistacursos")
+                return redirect("AppProyectoFinalListaTalleres")
     form = AuthenticationForm()
     context = {"form": form}
     return render(request, "account/login.html", context=context)
@@ -66,7 +66,7 @@ def editar_perfil(request):
                 avatar = Avatar(user=usuario, imagen=informacion["imagen"])
                 avatar.save()
             usuario.save()
-            return redirect("AppProyectoFinallistacursos")
+            return redirect("AppProyectoFinalListaTalleres")
     try:
         image = usuario.avatar.imagen
     except Avatar.DoesNotExist:
