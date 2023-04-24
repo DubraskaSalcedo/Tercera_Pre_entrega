@@ -82,36 +82,3 @@ def editar_perfil(request):
     )
     context = {"form": form}
     return render(request, "account/editar_perfil.html", context=context)
-
-def editar_perfil2(request):
-    usuario = request.user
-    if request.method == "POST":
-        form = UserEditForm(request.POST, request.FILES)
-        if form.is_valid():
-            informacion = form.cleaned_data
-            usuario.first_name = informacion["first_name"]
-            usuario.last_name = informacion["last_name"]
-            usuario.email = informacion["email"]
-            usuario.is_staff = informacion["is_staff"]
-            try:
-                usuario.avatar.imagen = informacion["image"]
-            except:
-                avatar = Avatar(user=usuario, imagen=informacion["image"])
-                avatar.save()
-            usuario.save()
-            return redirect("AppProyectoFinallistacursos")
-    try:
-        image = usuario.avatar.imagen
-    except Avatar.DoesNotExist:
-        image = None
-    form = UserEditForm(
-        initial={
-            "first_name": usuario.first_name,
-            "last_name": usuario.last_name,
-            "email": usuario.email,
-            "is_staff": usuario.is_staff,
-            "image": image
-        }
-    )
-    context = {"form": form}
-    return render(request, "account/editar_perfil.html", context=context)

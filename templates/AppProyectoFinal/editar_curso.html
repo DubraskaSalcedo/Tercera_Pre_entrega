@@ -5,7 +5,7 @@
 
 {# Formulario para editar el curso #}
 <div class="form-group">
-    <form action="{% url 'AppProyectoFinalEditar' title %}" method="POST">
+    <form action="{% url 'AppProyectoFinalEditarTaller' title %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
     <input type="submit" value="Editar">

@@ -15,7 +15,9 @@
 </div>
 <div class="container" style="display:flex; justify-content:center">
     <h4> {{curso.subtitle}} </h4>
-    <img src="{{ curso.image.url }}" height="60px">
+</div>
+<div class="container" style="display:flex; justify-content:center">
+    <img src="{{ curso.image.url }}" height="80px">
 </div>
 <div class="container" style="display:flex; justify-content:space-around">
     <p> {{curso.body}} </p>
@@ -28,7 +30,7 @@
     {% else %}
         {% for comment in all_comments  %}
             <strong>
-               {{comment.autor}}, {{comment.fecha}}
+               <img src="{{ comment.autor.avatar.imagen.url }}" height="40px"> {{comment.autor}}, {{comment.fecha}}
                 <br>
             </strong>
             {{comment.cuerpo}}
@@ -50,8 +52,18 @@
     {% endif %}
 </div>
 
+<div>
+     {% if user.is_authenticated  and user == curso.author %}
+            <a href="{% url 'AppProyectoFinalEliminarTaller' curso.title %}"> Eliminar Curso </a>
+            <br>
+            <br>
+            <a href="{% url 'AppProyectoFinalEditarTaller' curso.title %}"> Editar Curso</a>
+        {% endif %}
+</div>
+
 <div class="container" style="display:flex; justify-content:center">
     <a class="btn btn-light" href="{% url 'AppProyectoFinalListaTalleres' %}">Volver a Cursos</a>
 </div>
+
 <br>
 {% endblock %}
